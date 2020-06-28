@@ -1,29 +1,32 @@
 <?php
-namespace app\index\controller;
+namespace app\lib;
 
-set_time_limit(0);
+use core\Config;
+
 class Websocket
 {
-    protected $address = "127.0.0.1"; //IP地址
-    protected $port = 8081; //指定连接中需要监听的端口号
+    protected $config; //配置
     protected $sockets = [];
     protected $master;
-    private $listen_socket_num = 4; //最大连接数
 
-    public function __construct()
+    public function __construct($options = [])
     {
+        if (!empty($options)) {
+            $this->config = array_merge($this->config, $options);
+        } else {
+            $this->config = Config::get('websocket');
+        }
+
         $this->master = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
         // 设置IP和端口重用,在重启服务器后能重新使用此端口;
         socket_set_option($this->master, SOL_SOCKET, SO_REUSEADDR, 1);
-        socket_bind($this->master, $this->address, $this->port);
-        socket_listen($this->master, $this->listen_socket_num);
+        socket_bind($this->master, $this->config['address'], $this->config['port']);
+        socket_listen($this->master, $this->config['listen_socket_num']);
         $this->sockets[intval($this->master)] = ['resource' => $this->master];
-        //array_push($this->sockets,$socket);
     }
 
-    public function index()
+    public function run()
     {
-
         while (true) {
             $this->doServer();
             /*$buffer = socket_read($msg, 8192, PHP_BINARY_READ);

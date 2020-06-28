@@ -9,6 +9,9 @@ class App
      */
     public static function run()
     {
+        //加载配置
+        self::loadConfig();
+
         //绑定默认模块
         Router::bind(BIND_MODULE);
 
@@ -29,6 +32,23 @@ class App
     }
 
     /**
+     * 加载配置文件
+     */
+    public static function loadConfig()
+    {
+        $configPath = self::getConfigPath();
+        $files = [];
+        if (is_dir($configPath)) {
+            //查找匹配的文件路径模式
+            $files = glob($configPath . '*' . '.php');
+        }
+        foreach ($files as $file) {
+            $filename = pathinfo($file, PATHINFO_FILENAME);
+            Config::load($file, $filename);
+        }
+    }
+
+    /**
      * 路由分发
      * @param $vendor
      * @param $action
@@ -41,5 +61,10 @@ class App
         $instance = $obj->newInstanceArgs(); //实例化类
         $action = $obj->getMethod($action); //获取类中的方法
         $action->invoke($instance); //执行类的方法
+    }
+
+    public static function getConfigPath()
+    {
+        return ROOT_PATH . 'config' . DIRECTORY_SEPARATOR;
     }
 }

@@ -1,7 +1,7 @@
 <?php
 
 /**
- * 文件加载
+ * 文件加载类
  * Class Loader
  */
 class Loader

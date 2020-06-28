@@ -1,34 +1,32 @@
 <?php
-//配置类
 namespace core;
 
-use think\Exception;
-
+/**
+ * 配置类
+ * Class Config
+ * @package core
+ */
 class Config
 {
     //配置参数
     private static $config = [];
 
-    //设置配置(支持二级配置，用.分开，如database.type)
-
     /**
      * 设置配置
-     * 支持二级配置，用.分开，如database.type
-     * @param array|string|null $name 配置的键(string为键，array则是键值对)
-     * @param array|string|null $value 配置的键值
+     * @param array $config 配置(string为键，array则是键值对)
+     * @param string $name 配置的键
      */
-    public static function set($name, $value = null)
+    public static function set($config = [], string $name = null)
     {
-        if (is_string($name)) {
-            if (false === strpos($name, '.')) {//一级配置
-                self::$config[$name] = $value;
-            } else {//二级配置
-                $name = explode('.', $name);
-                self::$config[$name[0]][$name[1]] = $value;
+        if (!empty($name)) {
+            if (isset(self::$config[$name])) {
+                self::$config[$name] = array_merge(self::$config[$name], $config);
+            } else {
+                self::$config[$name] = $config;
             }
-        } elseif (is_array($name)) {
+        } else {
             //批量配置
-            self::$config = array_merge(self::$config, $name);
+            self::$config = array_merge(self::$config, $config);
         }
     }
 
@@ -54,14 +52,14 @@ class Config
     /**
      * 加载配置文件
      * @param string $file 文件绝对路径
+     * @param string $name 一级配置名
      */
-    public static function load($file)
+    public static function load($file, $name = '')
     {
         if (is_file($file)) {
-            self::set(include $file);
+            self::set(include $file, $name);
         } else {
             exit('找不到配置文件:' . $file);
         }
-
     }
 }
