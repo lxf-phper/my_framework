@@ -1,0 +1,31 @@
+{include file="common/header"}
+<body>
+    <div class="container">
+        <div class="col-md-4 login-panel" style="float: none; margin: 50px auto">
+            <div class="panel panel-default">
+                <div class="panel-heading">登陆页</div>
+                <div class="panel-body" style="padding:10px 15px">
+                    <form id="login-form" method="post" action="{:url('login/loginCheck')}">
+                        <div class="form-group">
+                            <!--<label for="user_name">用户名</label>-->
+                            <input type="text" class="form-control" id="user_name" name="user_name" placeholder="用户名">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block login" >登陆</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+<script>
+    $(function() {
+        /*$('.login').click(function(e) {
+            e.preventDefault();
+            var data = $('#login-form').serialize();
+
+            //var user_name = $(this).parents('form').find('.form-group').children().val();
+            //window.location.href = "{:url('login/loginCheck',['user_name'=>"+user_name+"])}";
+        });*/
+    });
+</script>
+</html>
