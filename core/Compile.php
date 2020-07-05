@@ -1,8 +1,11 @@
 <?php
 namespace core;
 
-//模板编译类
-
+/**
+ * 模板编译类
+ * Class Compile
+ * @package core
+ */
 class Compile
 {
     public $data;
@@ -23,7 +26,11 @@ class Compile
         "<?php } ?>"*/
     ];
 
-    //编译缓存文件
+    /**
+     * 编译缓存文件
+     * @param $content
+     * @param $cacheFile
+     */
     public function compileFile($content, $cacheFile)
     {
         $content = $this->parseTags($content);
@@ -31,7 +38,11 @@ class Compile
         file_put_contents($cacheFile, $content);
     }
 
-    //解析变量
+    /**
+     * 解析变量
+     * @param $content
+     * @return string|string[]|null
+     */
     protected function parseVar($content)
     {
         $search = '/\{\$([a-zA-Z_\x7f-\xff][a-zA-Z0-9_\x7f-\xff]*)\}/';
@@ -41,7 +52,11 @@ class Compile
         return $content;
     }
 
-    //解析标签库
+    /**
+     * 解析标签库
+     * @param $content
+     * @return mixed
+     */
     protected function parseTags($content)
     {
         $tags = array_keys($this->tag);
@@ -63,24 +78,29 @@ class Compile
             }
             unset($right,$matches);
         }
-        foreach ($nodes as $key => $val) {
-            $name = $val['name'];
-            //解析标签属性
-            $attr = $this->parseAttr($val['begin'][0]);
-            switch ($name) {
-                case 'volist':
-                case 'foreach':
-                    $content = $this->parseLoop($name, $attr, $val, $content);break;
-                case 'php':
-                    $content = $this->parsePhp($name, $attr, $val, $content);break;
+        if (!empty($nodes)) {
+            foreach ($nodes as $key => $val) {
+                $name = $val['name'];
+                //解析标签属性
+                $attr = $this->parseAttr($val['begin'][0]);
+                switch ($name) {
+                    case 'volist':
+                    case 'foreach':
+                        $content = $this->parseLoop($name, $attr, $val, $content);break;
+                    case 'php':
+                        $content = $this->parsePhp($name, $attr, $val, $content);break;
+                }
+                //halt($content);
             }
-            //halt($content);
         }
         return $content;
     }
 
-
-    //获取标签属性
+    /**
+     * 获取标签属性
+     * @param $str
+     * @return array|false|string
+     */
     protected function parseAttr($str)
     {
         $pattern = '/\s+(?>(?P<name>[\w-]+)\s*)=(?>\s*)([\"\'])(?P<value>(?:(?!\\2).)*)\\2/is';

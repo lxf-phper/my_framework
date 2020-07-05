@@ -3,7 +3,7 @@ namespace app\server\controller;
 
 use core\Websocket;
 
-class Draw
+class Socket
 {
     public function index()
     {

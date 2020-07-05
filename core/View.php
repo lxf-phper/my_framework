@@ -1,10 +1,15 @@
 <?php
-//模板引擎
+
 namespace core;
 
 use core\Router;
 use core\Compile;
 
+/**
+ * 模板引擎
+ * Class View
+ * @package core
+ */
 class View
 {
     protected $data = [];//模板变量
@@ -55,8 +60,12 @@ class View
         return $this;
     }
 
-    //模板渲染输出
-    //fetch('',['user_id'=>1,'username'=>'admin']) 或 fetch('login/login')
+    /**
+     * 模板渲染输出
+     * fetch('',['user_id'=>1,'username'=>'admin']) 或 fetch('login/login')
+     * @param string $template
+     * @param array $data
+     */
     public function fetch($template = '', $data = [])
     {
         //模板变量赋值
@@ -69,7 +78,7 @@ class View
         if ($template) {
             //文件路径
             if (!is_file($template)) {//没有文件，报错
-                exit('没有模板文件');
+                exit('没有模板文件'.$template);
             } else {
                 $cacheFile = $this->getCachePath($template);
                 //查询是否需要编译

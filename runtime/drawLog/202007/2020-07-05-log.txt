@@ -1,2 +1,891 @@
 [ 2020-07-05 16:21:16 ]  asdasdasd
 [ 2020-07-05 16:21:41 ]  
+[ 2020-07-05 23:24:17 ]  
+[ 2020-07-05 23:24:21 ]  resource: Resource id #18 | username:  | handshake:  | 
+[ 2020-07-05 23:24:21 ]  accept socket: Resource id #18
+[ 2020-07-05 23:24:21 ]  
+[ 2020-07-05 23:24:21 ]  handshake success: Resource id #18
+[ 2020-07-05 23:24:21 ]  
+[ 2020-07-05 23:24:21 ]  resource: Resource id #18 | username: 测试 | handshake: 1 | 
+[ 2020-07-05 23:24:21 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":99.5,"y":176,"isStart":true}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":95.5,"y":175,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":88.5,"y":185,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":82.5,"y":198,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":75.5,"y":224,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":75.5,"y":232,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":78.5,"y":240,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":84.5,"y":245,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":93.5,"y":248,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":101.5,"y":248,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":114.5,"y":245,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":131.5,"y":237,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":158.5,"y":220,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":174.5,"y":210,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":181.5,"y":205,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":183.5,"y":201,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":183.5,"y":200,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":183.5,"y":198,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":181.5,"y":196,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":171.5,"y":192,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":156.5,"y":190,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":139.5,"y":190,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":125.5,"y":192,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":112.5,"y":198,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":94.5,"y":209,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":75.5,"y":236,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":68.5,"y":265,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":85.5,"y":332,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":104.5,"y":348,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":133.5,"y":366,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":172.5,"y":378,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":208.5,"y":379,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":263.5,"y":372,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":306.5,"y":353,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":354.5,"y":326,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":389.5,"y":302,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":400.5,"y":295,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:22 ]  receive data:{"type":"draw","content":{"x":401.5,"y":294,"isStart":false}}
+[ 2020-07-05 23:24:22 ]  
+[ 2020-07-05 23:24:26 ]  receive data:{"type":"dialog","content":{"user_name":"\u6d4b\u8bd5","message":"\u4ed6\u5077\u5077\u5730"}}
+[ 2020-07-05 23:24:26 ]  
+[ 2020-07-05 23:24:35 ]  resource: Resource id #104 | username:  | handshake:  | 
+[ 2020-07-05 23:24:35 ]  accept socket: Resource id #104
+[ 2020-07-05 23:24:35 ]  
+[ 2020-07-05 23:24:35 ]  handshake success: Resource id #104
+[ 2020-07-05 23:24:35 ]  
+[ 2020-07-05 23:24:35 ]  resource: Resource id #104 | username: 测试 | handshake: 1 | 
+[ 2020-07-05 23:24:35 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":299.5,"y":85,"isStart":true}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":297.5,"y":103,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":297.5,"y":117,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":297.5,"y":130,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":299.5,"y":139,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":305.5,"y":148,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":310.5,"y":153,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":317.5,"y":160,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":322.5,"y":162,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":330.5,"y":163,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":347.5,"y":163,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":367.5,"y":157,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":383.5,"y":147,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":401.5,"y":131,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":406.5,"y":123,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":407.5,"y":116,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":405.5,"y":109,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":400.5,"y":103,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":389.5,"y":97,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":374.5,"y":94,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":358.5,"y":94,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":344.5,"y":96,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":329.5,"y":108,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":319.5,"y":126,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":310.5,"y":148,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":308.5,"y":171,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":308.5,"y":189,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":308.5,"y":192,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:37 ]  receive data:{"type":"draw","content":{"x":309.5,"y":193,"isStart":false}}
+[ 2020-07-05 23:24:37 ]  
+[ 2020-07-05 23:24:38 ]  receive data:{"type":"draw","content":{"x":312.5,"y":191,"isStart":false}}
+[ 2020-07-05 23:24:38 ]  
+[ 2020-07-05 23:24:38 ]  receive data:{"type":"draw","content":{"x":317.5,"y":185,"isStart":false}}
+[ 2020-07-05 23:24:38 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":461.5,"y":201,"isStart":true}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":462.5,"y":201,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":462.5,"y":201,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":462.5,"y":202,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":462.5,"y":213,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":461.5,"y":223,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":459.5,"y":231,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":457.5,"y":235,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":455.5,"y":236,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":442.5,"y":237,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":425.5,"y":237,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":405.5,"y":237,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":386.5,"y":235,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":380.5,"y":232,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":379.5,"y":230,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":379.5,"y":227,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":380.5,"y":223,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":391.5,"y":218,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":426.5,"y":214,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":527.5,"y":212,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":593.5,"y":221,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":633.5,"y":236,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":646.5,"y":249,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":652.5,"y":261,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":652.5,"y":269,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":644.5,"y":281,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":630.5,"y":291,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":607.5,"y":297,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":575.5,"y":299,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":544.5,"y":299,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":501.5,"y":287,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":488.5,"y":282,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":465.5,"y":261,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":461.5,"y":250,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":461.5,"y":240,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":466.5,"y":232,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:44 ]  receive data:{"type":"draw","content":{"x":472.5,"y":226,"isStart":false}}
+[ 2020-07-05 23:24:44 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":96.5,"y":48,"isStart":true}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":96.5,"y":48,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":96.5,"y":50,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":97.5,"y":55,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":105.5,"y":70,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":116.5,"y":84,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":128.5,"y":98,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":140.5,"y":106,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":148.5,"y":106,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":155.5,"y":106,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":172.5,"y":98,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":184.5,"y":85,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":191.5,"y":66,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":193.5,"y":56,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":193.5,"y":53,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":193.5,"y":52,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":192.5,"y":52,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":188.5,"y":51,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":168.5,"y":52,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":149.5,"y":58,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":128.5,"y":73,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":110.5,"y":89,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":96.5,"y":109,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":86.5,"y":125,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":83.5,"y":135,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":83.5,"y":142,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":83.5,"y":143,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":84.5,"y":146,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":85.5,"y":148,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":86.5,"y":148,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":87.5,"y":148,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":97.5,"y":146,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":106.5,"y":142,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":115.5,"y":138,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":121.5,"y":135,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":122.5,"y":134,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:24:46 ]  receive data:{"type":"draw","content":{"x":123.5,"y":134,"isStart":false}}
+[ 2020-07-05 23:24:46 ]  
+[ 2020-07-05 23:28:04 ]  resource: Resource id #322 | username:  | handshake:  | 
+[ 2020-07-05 23:28:04 ]  accept socket: Resource id #322
+[ 2020-07-05 23:28:04 ]  
+[ 2020-07-05 23:28:04 ]  handshake success: Resource id #322
+[ 2020-07-05 23:28:04 ]  
+[ 2020-07-05 23:28:04 ]  resource: Resource id #322 | username: 测试 | handshake: 1 | 
+[ 2020-07-05 23:28:04 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":311.5,"y":88,"isStart":true}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":304.5,"y":94,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":296.5,"y":127,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":304.5,"y":153,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":324.5,"y":166,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":400.5,"y":169,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":503.5,"y":145,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":529.5,"y":119,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":498.5,"y":100,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":437.5,"y":96,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":374.5,"y":116,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":346.5,"y":160,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":340.5,"y":199,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":340.5,"y":230,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:05 ]  receive data:{"type":"draw","content":{"x":340.5,"y":239,"isStart":false}}
+[ 2020-07-05 23:28:05 ]  
+[ 2020-07-05 23:28:09 ]  close socket:Resource id #18
+[ 2020-07-05 23:28:09 ]  
+[ 2020-07-05 23:28:09 ]  resource: Resource id #362 | username:  | handshake:  | 
+[ 2020-07-05 23:28:09 ]  accept socket: Resource id #362
+[ 2020-07-05 23:28:09 ]  
+[ 2020-07-05 23:28:09 ]  handshake success: Resource id #362
+[ 2020-07-05 23:28:09 ]  
+[ 2020-07-05 23:28:09 ]  resource: Resource id #362 | username: 测试 | handshake: 1 | 
+[ 2020-07-05 23:28:09 ]  
+[ 2020-07-05 23:28:10 ]  close socket:Resource id #104
+[ 2020-07-05 23:28:10 ]  
+[ 2020-07-05 23:28:11 ]  receive data:{"type":"draw","content":{"x":195.5,"y":82,"isStart":true}}
+[ 2020-07-05 23:28:11 ]  
+[ 2020-07-05 23:28:11 ]  receive data:{"type":"draw","content":{"x":179.5,"y":106,"isStart":false}}
+[ 2020-07-05 23:28:11 ]  
+[ 2020-07-05 23:28:11 ]  receive data:{"type":"draw","content":{"x":168.5,"y":161,"isStart":false}}
+[ 2020-07-05 23:28:11 ]  
+[ 2020-07-05 23:28:11 ]  receive data:{"type":"draw","content":{"x":167.5,"y":196,"isStart":false}}
+[ 2020-07-05 23:28:11 ]  
+[ 2020-07-05 23:28:11 ]  receive data:{"type":"draw","content":{"x":181.5,"y":213,"isStart":false}}
+[ 2020-07-05 23:28:11 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":216.5,"y":224,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":272.5,"y":205,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":290.5,"y":181,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":283.5,"y":163,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":228.5,"y":140,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":183.5,"y":145,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":137.5,"y":222,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":111.5,"y":276,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":110.5,"y":280,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":113.5,"y":280,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":156.5,"y":280,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":284.5,"y":261,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":332.5,"y":248,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":326.5,"y":248,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":267.5,"y":259,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":188.5,"y":276,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":172.5,"y":282,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":171.5,"y":282,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":387.5,"y":193,"isStart":true}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":379.5,"y":224,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":374.5,"y":245,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:12 ]  receive data:{"type":"draw","content":{"x":361.5,"y":278,"isStart":false}}
+[ 2020-07-05 23:28:12 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":357.5,"y":283,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":357.5,"y":280,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":360.5,"y":263,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":391.5,"y":197,"isStart":true}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":392.5,"y":198,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":405.5,"y":225,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":415.5,"y":262,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":418.5,"y":283,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":418.5,"y":282,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":421.5,"y":268,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":428.5,"y":243,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":439.5,"y":223,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":445.5,"y":219,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":447.5,"y":238,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":448.5,"y":277,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":449.5,"y":292,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":448.5,"y":292,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:13 ]  receive data:{"type":"draw","content":{"x":446.5,"y":292,"isStart":false}}
+[ 2020-07-05 23:28:13 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":613.5,"y":190,"isStart":true}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":581.5,"y":219,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":567.5,"y":245,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":567.5,"y":261,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":574.5,"y":274,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":594.5,"y":277,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":625.5,"y":264,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":663.5,"y":233,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":668.5,"y":224,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":663.5,"y":224,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":595.5,"y":267,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":554.5,"y":316,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":486.5,"y":400,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":466.5,"y":423,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":465.5,"y":423,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":458.5,"y":418,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":437.5,"y":402,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:28:16 ]  receive data:{"type":"draw","content":{"x":420.5,"y":393,"isStart":false}}
+[ 2020-07-05 23:28:16 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":330.5,"y":107,"isStart":true}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":330.5,"y":106,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":332.5,"y":106,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":341.5,"y":102,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":351.5,"y":98,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":361.5,"y":94,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":371.5,"y":93,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":383.5,"y":90,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":395.5,"y":87,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":411.5,"y":82,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":422.5,"y":77,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":435.5,"y":73,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":447.5,"y":69,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":458.5,"y":67,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":467.5,"y":65,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":477.5,"y":60,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":481.5,"y":59,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":485.5,"y":57,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":488.5,"y":57,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":489.5,"y":57,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":490.5,"y":56,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":491.5,"y":56,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:06 ]  receive data:{"type":"draw","content":{"x":492.5,"y":56,"isStart":false}}
+[ 2020-07-05 23:29:06 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":493.5,"y":56,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":495.5,"y":56,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":498.5,"y":55,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":499.5,"y":54,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":500.5,"y":54,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":501.5,"y":54,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":502.5,"y":54,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":504.5,"y":54,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":505.5,"y":54,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:07 ]  receive data:{"type":"draw","content":{"x":506.5,"y":54,"isStart":false}}
+[ 2020-07-05 23:29:07 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":85.5,"y":64,"isStart":true}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":61.5,"y":87,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":53.5,"y":116,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":60.5,"y":127,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":75.5,"y":125,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":104.5,"y":107,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":117.5,"y":93,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":118.5,"y":82,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":107.5,"y":75,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":81.5,"y":68,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":57.5,"y":74,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:10 ]  receive data:{"type":"draw","content":{"x":42.5,"y":97,"isStart":false}}
+[ 2020-07-05 23:29:10 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":37.5,"y":134,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":47.5,"y":155,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":60.5,"y":157,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":101.5,"y":137,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":154.5,"y":100,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":157.5,"y":90,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":150.5,"y":90,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":105.5,"y":102,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":62.5,"y":144,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":49.5,"y":174,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":54.5,"y":177,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":70.5,"y":171,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":90.5,"y":152,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":92.5,"y":141,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":83.5,"y":133,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":77.5,"y":137,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":76.5,"y":164,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":78.5,"y":169,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":83.5,"y":153,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":81.5,"y":122,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":65.5,"y":112,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":49.5,"y":140,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":54.5,"y":164,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":62.5,"y":164,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":109.5,"y":102,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":115.5,"y":63,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":75.5,"y":136,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":77.5,"y":169,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:11 ]  receive data:{"type":"draw","content":{"x":104.5,"y":167,"isStart":false}}
+[ 2020-07-05 23:29:11 ]  
+[ 2020-07-05 23:29:12 ]  receive data:{"type":"draw","content":{"x":128.5,"y":101,"isStart":false}}
+[ 2020-07-05 23:29:12 ]  
+[ 2020-07-05 23:29:12 ]  receive data:{"type":"draw","content":{"x":122.5,"y":80,"isStart":false}}
+[ 2020-07-05 23:29:12 ]  
+[ 2020-07-05 23:29:12 ]  receive data:{"type":"draw","content":{"x":115.5,"y":95,"isStart":false}}
+[ 2020-07-05 23:29:12 ]  
+[ 2020-07-05 23:29:12 ]  receive data:{"type":"draw","content":{"x":115.5,"y":130,"isStart":false}}
+[ 2020-07-05 23:29:12 ]  
+[ 2020-07-05 23:29:12 ]  receive data:{"type":"draw","content":{"x":117.5,"y":133,"isStart":false}}
+[ 2020-07-05 23:29:12 ]  
+[ 2020-07-05 23:29:12 ]  receive data:{"type":"draw","content":{"x":123.5,"y":113,"isStart":false}}
+[ 2020-07-05 23:29:12 ]  
+[ 2020-07-05 23:29:12 ]  receive data:{"type":"draw","content":{"x":124.5,"y":108,"isStart":false}}
+[ 2020-07-05 23:29:12 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":568.5,"y":42,"isStart":true}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":566.5,"y":49,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":563.5,"y":61,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":553.5,"y":111,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":549.5,"y":195,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":554.5,"y":216,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":562.5,"y":221,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":571.5,"y":221,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":584.5,"y":219,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":599.5,"y":208,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":621.5,"y":182,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":644.5,"y":149,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":659.5,"y":116,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":661.5,"y":84,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":656.5,"y":73,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":649.5,"y":65,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":613.5,"y":63,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":548.5,"y":72,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":450.5,"y":100,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":354.5,"y":137,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":290.5,"y":174,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":271.5,"y":199,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":269.5,"y":209,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":273.5,"y":213,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":285.5,"y":213,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":305.5,"y":212,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":338.5,"y":206,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":408.5,"y":188,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":461.5,"y":173,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":488.5,"y":162,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":494.5,"y":159,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":494.5,"y":158,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":490.5,"y":158,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:20 ]  receive data:{"type":"draw","content":{"x":467.5,"y":161,"isStart":false}}
+[ 2020-07-05 23:29:20 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":409.5,"y":173,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":327.5,"y":183,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":227.5,"y":202,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":217.5,"y":209,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":218.5,"y":209,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":241.5,"y":210,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":304.5,"y":210,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":401.5,"y":201,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":504.5,"y":186,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":585.5,"y":175,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":626.5,"y":173,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":629.5,"y":173,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":622.5,"y":173,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":562.5,"y":183,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":428.5,"y":202,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":344.5,"y":213,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":313.5,"y":218,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":312.5,"y":218,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":317.5,"y":218,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":367.5,"y":216,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":450.5,"y":198,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":540.5,"y":181,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":575.5,"y":177,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":576.5,"y":177,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":570.5,"y":177,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":528.5,"y":177,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:21 ]  receive data:{"type":"draw","content":{"x":481.5,"y":177,"isStart":false}}
+[ 2020-07-05 23:29:21 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":386.5,"y":141,"isStart":true}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":390.5,"y":144,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":428.5,"y":190,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":466.5,"y":252,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":504.5,"y":292,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":535.5,"y":288,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":579.5,"y":162,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":567.5,"y":63,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":530.5,"y":29,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":489.5,"y":45,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":420.5,"y":140,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":386.5,"y":259,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":394.5,"y":305,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":408.5,"y":306,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":448.5,"y":249,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":460.5,"y":180,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":429.5,"y":146,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:23 ]  receive data:{"type":"draw","content":{"x":390.5,"y":148,"isStart":false}}
+[ 2020-07-05 23:29:23 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":353.5,"y":231,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":344.5,"y":279,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":344.5,"y":281,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":363.5,"y":247,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":383.5,"y":160,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":342.5,"y":102,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":282.5,"y":94,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":155.5,"y":206,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":119.5,"y":305,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":124.5,"y":322,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":148.5,"y":331,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":252.5,"y":257,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":333.5,"y":129,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":290.5,"y":20,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":158.5,"y":-30,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":-32.5,"y":126,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":-113.5,"y":319,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":-98.5,"y":380,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":-11.5,"y":343,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":157.5,"y":163,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":231.5,"y":24,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":191.5,"y":-4,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":92.5,"y":16,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":51.5,"y":79,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":40.5,"y":160,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":69.5,"y":199,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":146.5,"y":211,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":253.5,"y":185,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":263.5,"y":169,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:24 ]  receive data:{"type":"draw","content":{"x":266.5,"y":143,"isStart":false}}
+[ 2020-07-05 23:29:24 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":266.5,"y":126,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":265.5,"y":125,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":265.5,"y":124,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":265.5,"y":115,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":264.5,"y":110,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":264.5,"y":105,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":274.5,"y":78,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":275.5,"y":76,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":280.5,"y":88,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":315.5,"y":162,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":338.5,"y":344,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":319.5,"y":409,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":319.5,"y":409,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":324.5,"y":360,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":308.5,"y":297,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  
+[ 2020-07-05 23:29:25 ]  receive data:{"type":"draw","content":{"x":260.5,"y":285,"isStart":false}}
+[ 2020-07-05 23:29:25 ]  

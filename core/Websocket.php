@@ -5,21 +5,29 @@ class Websocket
 {
     protected $config = []; //配置
     protected $sockets = [];
-    protected $master;
+    protected $socket;
 
     public function __construct($options = [])
+    {
+        $this->init();
+
+        $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        // 设置IP和端口重用,在重启服务器后能重新使用此端口;
+        socket_set_option($this->socket, SOL_SOCKET, SO_REUSEADDR, 1);
+        socket_bind($this->socket, $this->config['address'], $this->config['port']);
+        socket_listen($this->socket, $this->config['listen_socket_num']);
+        $this->sockets[intval($this->socket)] = ['resource' => $this->socket];
+    }
+
+    /**
+     * 初始化
+     */
+    public function init()
     {
         $this->config = Config::get('websocket');
         if (!empty($options)) {
             $this->config = array_merge($this->config, $options);
         }
-
-        $this->master = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        // 设置IP和端口重用,在重启服务器后能重新使用此端口;
-        socket_set_option($this->master, SOL_SOCKET, SO_REUSEADDR, 1);
-        socket_bind($this->master, $this->config['address'], $this->config['port']);
-        socket_listen($this->master, $this->config['listen_socket_num']);
-        $this->sockets[intval($this->master)] = ['resource' => $this->master];
     }
 
     public function run()
@@ -51,7 +59,7 @@ class Websocket
             return null;
         }
         foreach ($sockets as $key=>$socket) {
-            if ($socket == $this->master) {
+            if ($socket == $this->socket) {
                 $msg = socket_accept($socket) or die("socket_accept() failed: reason: " . socket_strerror(socket_last_error()) . "/n");
                 if ($msg != false) {
                     $this->connect($msg);
@@ -186,7 +194,8 @@ class Websocket
 
     // 解析数据帧(1Byte=8bit)
     // 一个英文字母（不分大小写）占一个字节的空间，一个中文汉字占两个字节的空间。一个二进制数字序列，在计算机中作为一个数字单元，一般为8位二进制数，换算为十进制。最小值0，最大值255。如一个ASCII码就是一个字节。
-    public function decode($socket, $buffer)  {
+    public function decode($socket, $buffer)
+    {
         $opcode = ord(substr($buffer, 0, 1)) & 0x0F; //opcode标识数据类型,如果收到一个未知的操作码，接收端点必须_失败WebSocket连接
         $payloadlen = ord(substr($buffer, 1, 1)) & 0x7F; //PayloadLen表示数据部分的长度
         $ismask = (ord(substr($buffer, 1, 1)) & 0x80) >> 7; //MASK标识这个数据帧的数据是否使用掩码，定义payload数据是否进行了掩码处理，如果是1表示进行了掩码处理。Masking-key域的数据即是掩码密钥，用于解码PayloadData。客户端发出的数据帧需要进行掩码处理，所以此位是1。
@@ -218,7 +227,12 @@ class Websocket
         return json_decode($decodedata, true);
     }
 
-    // 把发送信息组成websocket数据帧
+    /**
+     * 把发送信息组成websocket数据帧
+     * @param string $msg
+     * @param int $opcode
+     * @return string|null
+     */
     public function undecode($msg="", $opcode = 0x1)
     {
         //control bit, default is 0x1(text data)
