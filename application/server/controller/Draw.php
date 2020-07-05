@@ -1,11 +1,11 @@
 <?php
-namespace app\index\controller;
+namespace app\server\controller;
 
-use app\lib\Websocket;
+use core\Websocket;
 
 class Draw
 {
-    public function test()
+    public function index()
     {
         $webSocket = new Websocket();
         $webSocket->run();

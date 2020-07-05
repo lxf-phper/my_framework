@@ -1,20 +1,17 @@
 <?php
-namespace app\lib;
-
-use core\Config;
+namespace core;
 
 class Websocket
 {
-    protected $config; //配置
+    protected $config = []; //配置
     protected $sockets = [];
     protected $master;
 
     public function __construct($options = [])
     {
+        $this->config = Config::get('websocket');
         if (!empty($options)) {
             $this->config = array_merge($this->config, $options);
-        } else {
-            $this->config = Config::get('websocket');
         }
 
         $this->master = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
@@ -44,7 +41,7 @@ class Websocket
 
     public function doServer()
     {
-        //$this->writeLog(count($this->sockets));
+        $this->writeLog(json_encode($this->sockets));
         $sockets = array_column($this->sockets, 'resource');
         // 阻塞进程，直到有socket接入
         $read_num = socket_select($sockets, $write, $except, null);
@@ -89,7 +86,10 @@ class Websocket
         }
     }
 
-    //广播信息
+    /**
+     * 广播信息
+     * @param $msg
+     */
     public function broadcast($msg)
     {
         foreach ($this->sockets as $key=>$socket) {
@@ -271,7 +271,7 @@ class Websocket
         }
         $message = '[ '.date('Y-m-d H:i:s')." ]  ".$msg."\n";
         // 路径
-        $path = str_replace('\\', '/', RUNTIME_PATH.'drawLog/'.date('Ym').'/');
+        $path = str_replace('\\', '/', '../runtime/drawLog/'.date('Ym').'/');
         if (!is_dir($path)) {
             @mkdir($path, 0777, true);
         }

@@ -61,6 +61,7 @@ class App
         $instance = $obj->newInstanceArgs(); //实例化类
         $action = $obj->getMethod($action); //获取类中的方法
         $action->invoke($instance); //执行类的方法
+        //$action->invokeArgs($instance, $params);
     }
 
     public static function getConfigPath()
