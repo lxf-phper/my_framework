@@ -1,6 +1,10 @@
 <?php
 namespace core;
 
+/**
+ * Class Websocket
+ * @package core
+ */
 class Websocket
 {
     protected $config = []; //配置
@@ -9,20 +13,25 @@ class Websocket
 
     public function __construct($options = [])
     {
-        $this->init();
-
+        //初始化
+        $this->init($options);
         $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
         // 设置IP和端口重用,在重启服务器后能重新使用此端口;
         socket_set_option($this->socket, SOL_SOCKET, SO_REUSEADDR, 1);
         socket_bind($this->socket, $this->config['address'], $this->config['port']);
         socket_listen($this->socket, $this->config['listen_socket_num']);
         $this->sockets[intval($this->socket)] = ['resource' => $this->socket];
+
+        $pid = getmypid();
+        echo "server: {$this->socket} started,pid: {$pid}\n";
+
     }
 
     /**
      * 初始化
+     * @param $options
      */
-    public function init()
+    public function init($options)
     {
         $this->config = Config::get('websocket');
         if (!empty($options)) {
@@ -30,65 +39,54 @@ class Websocket
         }
     }
 
+    /**
+     * 执行函数
+     * @return null
+     */
     public function run()
     {
         while (true) {
-            $this->doServer();
-            /*$buffer = socket_read($msg, 8192, PHP_BINARY_READ);
-            if (!$this->hand) {
-                $this->handshake($msg, $buffer);
-            } else {
-                $msg2 = $this->undecode("success成功\n");
-                socket_write($msg, $msg2, strlen($msg2));
-                //接收数据并打印
-                //halt($this->decode($buffer));
-                //socket_write($msg, 'test\n');
-            }*/
-        }
-    }
-
-    public function doServer()
-    {
-        $this->writeLog(json_encode($this->sockets));
-        $sockets = array_column($this->sockets, 'resource');
-        // 阻塞进程，直到有socket接入
-        $read_num = socket_select($sockets, $write, $except, null);
-        if ($read_num == false) {
-            $errorMsg = socket_last_error();
-            $this->writeLog($errorMsg);
-            return null;
-        }
-        foreach ($sockets as $key=>$socket) {
-            if ($socket == $this->socket) {
-                $msg = socket_accept($socket) or die("socket_accept() failed: reason: " . socket_strerror(socket_last_error()) . "/n");
-                if ($msg != false) {
-                    $this->connect($msg);
-                    $this->writeLog('accept socket: '.$msg);
-                    continue;
+            $this->writeLog(json_encode($this->sockets));
+            $sockets = array_column($this->sockets, 'resource');
+            // 阻塞进程，直到有socket接入
+            $read_num = socket_select($sockets, $write, $except, null);
+            if ($read_num == false) {
+                $errorMsg = socket_last_error();
+                $this->writeLog($errorMsg);
+                return null;
+            }
+            foreach ($sockets as $key => $socket) {
+                if ($socket == $this->socket) {
+                    $msg = socket_accept($socket) or die("socket_accept() failed: reason: " . socket_strerror(socket_last_error()) . "/n");
+                    if ($msg != false) {
+                        $this->connect($msg);
+                        $this->writeLog('accept socket: ' . $msg);
+                        continue;
+                    } else {
+                        $errorMsg = socket_strerror(socket_last_error());
+                        $this->writeLog($errorMsg);
+                        continue;
+                    }
                 } else {
-                    $errorMsg = socket_strerror(socket_last_error());
-                    $this->writeLog($errorMsg);
-                    continue;
-                }
-            } else {
-                $buffer = socket_read($socket, 8192, PHP_BINARY_READ);
-                if ($this->sockets[intval($socket)]['handshake'] == false) {
-                    $this->handshake($socket, $buffer);
-                    continue;
-                } else {
-                    //$broadcastMsg = $this->decode($socket, $buffer);
-                    $broadcastMsg = $this->handleMsg($socket, $buffer);
-                    //halt($broadcastMsg);
-                    //$broadcastMsg = json_encode($broadcastMsg,true);
-                    //$this->writeLog('receive data:'.$broadcastMsg);
-                    //if (!empty($broadcastMsg)) {
+                    $buffer = socket_read($socket, 8192, PHP_BINARY_READ);
+                    if ($this->sockets[intval($socket)]['handshake'] == false) {
+                        $this->handshake($socket, $buffer);
+                        continue;
+                    } else {
+                        //$broadcastMsg = $this->decode($socket, $buffer);
+                        $broadcastMsg = $this->handleMsg($socket, $buffer);
+                        //halt($broadcastMsg);
+                        //$broadcastMsg = json_encode($broadcastMsg,true);
+                        //$this->writeLog('receive data:'.$broadcastMsg);
+                        //if (!empty($broadcastMsg)) {
                         $this->broadcast($broadcastMsg);
-                    //}
-                    continue;
-                    //socket_write($socket, $broadcastMsg, strlen($broadcastMsg));
-                    //接收数据并打印
-                    //halt($this->decode($buffer));
-                    //socket_write($msg, 'test\n');
+                        //}
+                        continue;
+                        //socket_write($socket, $broadcastMsg, strlen($broadcastMsg));
+                        //接收数据并打印
+                        //halt($this->decode($buffer));
+                        //socket_write($msg, 'test\n');
+                    }
                 }
             }
         }
@@ -192,8 +190,13 @@ class Websocket
         return true;
     }
 
-    // 解析数据帧(1Byte=8bit)
-    // 一个英文字母（不分大小写）占一个字节的空间，一个中文汉字占两个字节的空间。一个二进制数字序列，在计算机中作为一个数字单元，一般为8位二进制数，换算为十进制。最小值0，最大值255。如一个ASCII码就是一个字节。
+    /**
+     * 解析数据帧(1Byte=8bit)
+     * 一个英文字母（不分大小写）占一个字节的空间，一个中文汉字占两个字节的空间。一个二进制数字序列，在计算机中作为一个数字单元，一般为8位二进制数，换算为十进制。最小值0，最大值255。如一个ASCII码就是一个字节。
+     * @param $socket
+     * @param $buffer
+     * @return mixed|null
+     */
     public function decode($socket, $buffer)
     {
         $opcode = ord(substr($buffer, 0, 1)) & 0x0F; //opcode标识数据类型,如果收到一个未知的操作码，接收端点必须_失败WebSocket连接
@@ -240,10 +243,9 @@ class Websocket
         $encodedata = null;
         $len = strlen($msg);
 
-        if (0 <= $len && $len <= 125)
+        if (0 <= $len && $len <= 125) {
             $encodedata = chr(0x81) . chr($len) . $msg;
-        else if (126 <= $len && $len <= 0xFFFF)
-        {
+        } else if (126 <= $len && $len <= 0xFFFF) {
             $low = $len & 0x00FF;
             $high = ($len & 0xFF00) >> 8;
             $encodedata = chr($firstByte) . chr(0x7E) . chr($high) . chr($low) . $msg;
@@ -252,7 +254,10 @@ class Websocket
         return $encodedata;
     }
 
-    // 记录socket连接
+    /**
+     * 记录socket连接
+     * @param $msg
+     */
     public function connect($msg)
     {
         $socket = [
@@ -261,6 +266,7 @@ class Websocket
             'handshake' => false
         ];
         $this->sockets[intval($socket['resource'])] = $socket;
+        echo "client: {$this->socket} connect\n";
         $writeMsg = '';
         foreach ($socket as $key=>$val) {
             $writeMsg .= $key.': '.$val.' | ';
@@ -269,7 +275,10 @@ class Websocket
         $this->writeLog($writeMsg);
     }
 
-    // 关闭socket连接
+    /**
+     * 关闭socket连接
+     * @param $socket
+     */
     public function disconnect($socket)
     {
         unset($this->sockets[intval($socket['resource'])]);
