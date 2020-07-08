@@ -7,6 +7,7 @@ namespace core;
  */
 class Websocket
 {
+    //D:\phpstudy\PHPTutorial\php\php-7.0.12-nts\php.exe socket_server.php
     protected $config = []; //配置
     protected $sockets = [];
     protected $socket;
@@ -22,9 +23,7 @@ class Websocket
         socket_listen($this->socket, $this->config['listen_socket_num']);
         $this->sockets[intval($this->socket)] = ['resource' => $this->socket];
 
-        $pid = getmypid();
-        echo "server: {$this->socket} started,pid: {$pid}\n";
-
+        pt_progress('server: ' . $this->socket . ' started, pid: ' . getmypid());
     }
 
     /**
@@ -57,10 +56,10 @@ class Websocket
             }
             foreach ($sockets as $key => $socket) {
                 if ($socket == $this->socket) {
-                    $msg = socket_accept($socket) or die("socket_accept() failed: reason: " . socket_strerror(socket_last_error()) . "/n");
-                    if ($msg != false) {
-                        $this->connect($msg);
-                        $this->writeLog('accept socket: ' . $msg);
+                    $resource = socket_accept($socket) or die("socket_accept() failed: reason: " . socket_strerror(socket_last_error()) . "/n");
+                    if ($resource != false) {
+                        $this->connect($resource);
+//                        $this->writeLog('accept socket: ' . $resource);
                         continue;
                     } else {
                         $errorMsg = socket_strerror(socket_last_error());
@@ -256,23 +255,23 @@ class Websocket
 
     /**
      * 记录socket连接
-     * @param $msg
+     * @param $resource
      */
-    public function connect($msg)
+    public function connect($resource)
     {
         $socket = [
-            'resource' => $msg,
+            'resource' => $resource,
             'username' => '',
             'handshake' => false
         ];
         $this->sockets[intval($socket['resource'])] = $socket;
-        echo "client: {$this->socket} connect\n";
-        $writeMsg = '';
-        foreach ($socket as $key=>$val) {
-            $writeMsg .= $key.': '.$val.' | ';
-        }
-        //array_push($this->sockets,$socket);
-        $this->writeLog($writeMsg);
+        pt_progress('client: ' . $resource . ' connect, pid: ' . getmypid());
+//        $writeMsg = '';
+//        foreach ($socket as $key=>$val) {
+//            $writeMsg .= $key.': '.$val.' | ';
+//        }
+//        //array_push($this->sockets,$socket);
+//        $this->writeLog($writeMsg);
     }
 
     /**

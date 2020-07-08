@@ -37,3 +37,16 @@ if (!function_exists('is_cli')) {
         return preg_match('/cli/i', php_sapi_name()) ? true : false;
     }
 }
+
+if (!function_exists('pt_progress')) {
+    /**
+     * 打印进度
+     * @param string $contents
+     */
+    function pt_progress($contents)
+    {
+        echo '[' . date('Y-m-d H:i:s') . ']';
+        echo $contents;
+        echo PHP_EOL;
+    }
+}
