@@ -10,32 +10,63 @@ class Websocket
     //D:\phpstudy\PHPTutorial\php\php-7.0.12-nts\php.exe socket_server.php
     protected $config = []; //配置
     protected $sockets = [];
-    protected $socket;
+    /**
+     * 服务器的socket
+     * @var resource
+     */
+    protected $mainSocket;
 
+    /**
+     * Websocket constructor.
+     * @param array $options
+     */
     public function __construct($options = [])
     {
-        //初始化
-        $this->init($options);
-        $this->socket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
-        // 设置IP和端口重用,在重启服务器后能重新使用此端口;
-        socket_set_option($this->socket, SOL_SOCKET, SO_REUSEADDR, 1);
-        socket_bind($this->socket, $this->config['address'], $this->config['port']);
-        socket_listen($this->socket, $this->config['listen_socket_num']);
-        $this->sockets[intval($this->socket)] = ['resource' => $this->socket];
-
-        pt_progress('server: ' . $this->socket . ' started, pid: ' . getmypid());
+//        // 加载配置
+//        $this->loadConfig($options);
+//        // 初始化
+//        $this->init();
     }
 
     /**
-     * 初始化
+     * 加载配置
      * @param $options
      */
-    public function init($options)
+    private function loadConfig($options)
     {
         $this->config = Config::get('websocket');
         if (!empty($options)) {
             $this->config = array_merge($this->config, $options);
         }
+        if (!empty($this->config)) {
+            $this->config = [
+                'address'           => "127.0.0.1", //IP地址
+                'port'              => 8081, //指定连接中需要监听的端口号
+                'listen_socket_num' => 4, //最大连接数
+            ];
+        }
+    }
+
+    /**
+     * 初始化
+     */
+    public function init()
+    {
+        // 创建一个套接字(通讯节点)
+        $this->mainSocket = socket_create(AF_INET, SOCK_STREAM, SOL_TCP);
+        // 设置socket选项(设置IP和端口重用,在重启服务器后能重新使用此端口)
+        socket_set_option($this->mainSocket, SOL_SOCKET, SO_REUSEADDR, 1);
+        // 给套接字绑定名字(绑定 address 到 socket)
+        socket_bind($this->mainSocket, $this->config['address'], $this->config['port']);
+        // 监听套接字的连接
+        socket_listen($this->mainSocket, $this->config['listen_socket_num']);
+        $this->sockets[intval($this->mainSocket)] = ['resource' => $this->mainSocket];
+
+        pt_progress(
+            'SERVER: ' . $this->mainSocket . ' started | ' .
+            'LISTEN ON: ' . $this->config['address'] . ':' . $this->config['port'] . ' | ' .
+            'PID: ' . getmypid()
+        );
     }
 
     /**
@@ -45,28 +76,28 @@ class Websocket
     public function run()
     {
         while (true) {
-            $this->writeLog(json_encode($this->sockets));
             $sockets = array_column($this->sockets, 'resource');
-            // 阻塞进程，直到有socket接入
-            $read_num = socket_select($sockets, $write, $except, null);
-            if ($read_num == false) {
-                $errorMsg = socket_last_error();
-                $this->writeLog($errorMsg);
+            // 接受套接字数组并等待它们更改状态(阻塞进程,直到有socket接入)
+            $readNum = socket_select($sockets, $write, $except, null);
+            if ($readNum == false) {
+                $msg = "socket_select() failed: reason: " . socket_strerror(socket_last_error());
+                pt_progress($msg);
                 return null;
             }
             foreach ($sockets as $key => $socket) {
-                if ($socket == $this->socket) {
-                    $resource = socket_accept($socket) or die("socket_accept() failed: reason: " . socket_strerror(socket_last_error()) . "/n");
+                if ($socket == $this->mainSocket) {
+                    // 如果可读的是服务器的socket,则处理连接逻辑
+                    $resource = socket_accept($socket);
                     if ($resource != false) {
                         $this->connect($resource);
-//                        $this->writeLog('accept socket: ' . $resource);
                         continue;
                     } else {
-                        $errorMsg = socket_strerror(socket_last_error());
-                        $this->writeLog($errorMsg);
+                        $msg = "socket_accept() failed: reason: " . socket_strerror(socket_last_error());
+                        pt_progress($msg);
                         continue;
                     }
                 } else {
+                    // 如果可读的是其他已连接 socket ,则读取其数据,并处理应答逻辑
                     $buffer = socket_read($socket, 8192, PHP_BINARY_READ);
                     if ($this->sockets[intval($socket)]['handshake'] == false) {
                         $this->handshake($socket, $buffer);
@@ -265,7 +296,13 @@ class Websocket
             'handshake' => false
         ];
         $this->sockets[intval($socket['resource'])] = $socket;
-        pt_progress('client: ' . $resource . ' connect, pid: ' . getmypid());
+
+        socket_getpeername($resource, $addr, $port);
+        pt_progress(
+            'CLIENT: ' . $resource . ' connect | ' .
+            'CONNECT FROM: ' . $addr . ':' . $port . ' | ' .
+            'PID: ' . getmypid()
+        );
 //        $writeMsg = '';
 //        foreach ($socket as $key=>$val) {
 //            $writeMsg .= $key.': '.$val.' | ';
