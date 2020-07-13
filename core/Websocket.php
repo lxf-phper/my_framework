@@ -1,4 +1,5 @@
 <?php
+
 namespace core;
 
 /**
@@ -22,10 +23,10 @@ class Websocket
      */
     public function __construct($options = [])
     {
-//        // 加载配置
-//        $this->loadConfig($options);
-//        // 初始化
-//        $this->init();
+        // 加载配置
+        $this->loadConfig($options);
+        // 初始化
+        $this->init();
     }
 
     /**
@@ -76,7 +77,7 @@ class Websocket
     public function run()
     {
         while (true) {
-            $sockets = array_column($this->sockets, 'resource');
+            $sockets = $this->getSockets();
             // 接受套接字数组并等待它们更改状态(阻塞进程,直到有socket接入)
             $readNum = socket_select($sockets, $write, $except, null);
             if ($readNum == false) {
@@ -89,33 +90,19 @@ class Websocket
                     // 如果可读的是服务器的socket,则处理连接逻辑
                     $resource = socket_accept($socket);
                     if ($resource != false) {
-                        $this->connect($resource);
-                        continue;
+                        $this->setSockets($resource);
                     } else {
                         $msg = "socket_accept() failed: reason: " . socket_strerror(socket_last_error());
                         pt_progress($msg);
-                        continue;
                     }
                 } else {
                     // 如果可读的是其他已连接 socket ,则读取其数据,并处理应答逻辑
                     $buffer = socket_read($socket, 8192, PHP_BINARY_READ);
                     if ($this->sockets[intval($socket)]['handshake'] == false) {
                         $this->handshake($socket, $buffer);
-                        continue;
                     } else {
-                        //$broadcastMsg = $this->decode($socket, $buffer);
                         $broadcastMsg = $this->handleMsg($socket, $buffer);
-                        //halt($broadcastMsg);
-                        //$broadcastMsg = json_encode($broadcastMsg,true);
-                        //$this->writeLog('receive data:'.$broadcastMsg);
-                        //if (!empty($broadcastMsg)) {
                         $this->broadcast($broadcastMsg);
-                        //}
-                        continue;
-                        //socket_write($socket, $broadcastMsg, strlen($broadcastMsg));
-                        //接收数据并打印
-                        //halt($this->decode($buffer));
-                        //socket_write($msg, 'test\n');
                     }
                 }
             }
@@ -128,11 +115,9 @@ class Websocket
      */
     public function broadcast($msg)
     {
-        foreach ($this->sockets as $key=>$socket) {
-            if (isset($socket['handshake'])) {
-                if (!empty($socket['handshake'])) {
-                    socket_write($socket['resource'], $msg, strlen($msg));
-                }
+        foreach ($this->sockets as $key => $socket) {
+            if (isset($socket['handshake']) && !empty($socket['handshake']) && is_resource($socket['resource'])) {
+                socket_write($socket['resource'], $msg, strlen($msg));
             }
         }
     }
@@ -151,26 +136,26 @@ class Websocket
             case 'login' :
                 $this->sockets[intval($socket)]['username'] = $content['user_name'];
                 $writeMsg = '';
-                foreach ($this->sockets[intval($socket)] as $key=>$val) {
-                    $writeMsg .= $key.': '.$val.' | ';
+                foreach ($this->sockets[intval($socket)] as $key => $val) {
+                    $writeMsg .= $key . ': ' . $val . ' | ';
                 }
                 $this->writeLog($writeMsg);
                 $msg = [
-                    'type' => $type,
+                    'type'    => $type,
                     'content' => [
                         'user_name' => $content['user_name'],
-                        'user_list' => array_column($this->sockets,'username'),
+                        'user_list' => array_column($this->sockets, 'username'),
                     ]
                 ];
                 $broadcastMsg = json_encode($msg);
                 break;
             case 'draw' :
                 $msg = [
-                    'type' => $type,
+                    'type'    => $type,
                     'content' => $content,
                 ];
                 $broadcastMsg = json_encode($msg);
-                $this->writeLog('receive data:'.$broadcastMsg);
+                $this->writeLog('receive data:' . $broadcastMsg);
                 break;
             case 'clear' :
                 $msg = [
@@ -181,11 +166,11 @@ class Websocket
                 break;
             case 'dialog' :
                 $msg = [
-                    'type' => $type,
+                    'type'    => $type,
                     'content' => $content
                 ];
                 $broadcastMsg = json_encode($msg);
-                $this->writeLog('receive data:'.$broadcastMsg);
+                $this->writeLog('receive data:' . $broadcastMsg);
                 break;
         }
         return $this->undecode($broadcastMsg);
@@ -197,16 +182,16 @@ class Websocket
      * @param $buffer
      * @return bool
      */
-    public function handshake($socket,$buffer)
+    public function handshake($socket, $buffer)
     {
-        $key = substr($buffer,strpos($buffer, 'Sec-WebSocket-Key:')+18);
-        $key = trim(substr($key, 0, strpos($key,"\r\n")));
+        $key = substr($buffer, strpos($buffer, 'Sec-WebSocket-Key:') + 18);
+        $key = trim(substr($key, 0, strpos($key, "\r\n")));
         $key .= '258EAFA5-E914-47DA-95CA-C5AB0DC85B11';
-        $upgrade_key = base64_encode(sha1($key,true));
+        $upgrade_key = base64_encode(sha1($key, true));
         $response = "HTTP/1.1 101 Switching Protocols\r\n"
-                    . "Upgrade: websocket\r\n"
-                    . "Connection: Upgrade\r\n"
-                    . "Sec-WebSocket-Accept: " . $upgrade_key . "\r\n\r\n";
+            . "Upgrade: websocket\r\n"
+            . "Connection: Upgrade\r\n"
+            . "Sec-WebSocket-Accept: " . $upgrade_key . "\r\n\r\n";
         socket_write($socket, $response, strlen($response)); // 向socket里写入升级信息
         $this->sockets[intval($socket)]['handshake'] = true; //修改当前socket的握手状态
         // 向客户端发送握手成功信息，触发客户端发送用户信息
@@ -216,7 +201,13 @@ class Websocket
         $msg = json_encode($msg);
         $msg = $this->undecode($msg);
         socket_write($socket, $msg, strlen($msg));
-        $this->writeLog('handshake success: '.$socket);
+
+        socket_getpeername($socket, $addr, $port);
+        pt_progress(
+            'CLIENT: ' . $socket . ' handshake | ' .
+            'CONNECT FROM: ' . $addr . ':' . $port . ' | ' .
+            'PID: ' . getmypid()
+        );
         return true;
     }
 
@@ -266,7 +257,7 @@ class Websocket
      * @param int $opcode
      * @return string|null
      */
-    public function undecode($msg="", $opcode = 0x1)
+    public function undecode($msg = "", $opcode = 0x1)
     {
         //control bit, default is 0x1(text data)
         $firstByte = 0x80 | $opcode;
@@ -288,11 +279,11 @@ class Websocket
      * 记录socket连接
      * @param $resource
      */
-    public function connect($resource)
+    public function setSockets($resource)
     {
         $socket = [
-            'resource' => $resource,
-            'username' => '',
+            'resource'  => $resource,
+            'username'  => '',
             'handshake' => false
         ];
         $this->sockets[intval($socket['resource'])] = $socket;
@@ -311,14 +302,32 @@ class Websocket
 //        $this->writeLog($writeMsg);
     }
 
+    public function getSockets()
+    {
+        foreach ($this->sockets as $key => $val) {
+            if (!is_resource($val['resource'])) {
+                $this->disconnect($val['resource']);
+            }
+        }
+        $sockets = array_column($this->sockets, 'resource');
+        return $sockets;
+    }
+
     /**
      * 关闭socket连接
      * @param $socket
      */
     public function disconnect($socket)
     {
-        unset($this->sockets[intval($socket['resource'])]);
-        $this->writeLog('close socket:'.$socket);
+        unset($this->sockets[intval($socket)]);
+
+        socket_getpeername($socket, $addr, $port);
+        pt_progress(
+            'CLIENT: ' . $socket . ' close | ' .
+            'CONNECT FROM: ' . $addr . ':' . $port . ' | ' .
+            'PID: ' . getmypid()
+        );
+
         socket_close($socket);
     }
 
@@ -326,15 +335,15 @@ class Websocket
     public function writeLog($msg)
     {
         if (is_array($msg)) {
-            return ;
+            return;
         }
-        $message = '[ '.date('Y-m-d H:i:s')." ]  ".$msg."\n";
+        $message = '[ ' . date('Y-m-d H:i:s') . " ]  " . $msg . "\n";
         // 路径
-        $path = str_replace('\\', '/', '../runtime/drawLog/'.date('Ym').'/');
+        $path = str_replace('\\', '/', '../runtime/drawLog/' . date('Ym') . '/');
         if (!is_dir($path)) {
             @mkdir($path, 0777, true);
         }
-        $filePath = $path.date('Y-m-d').'-log.txt';
+        $filePath = $path . date('Y-m-d') . '-log.txt';
         file_put_contents($filePath, $message, FILE_APPEND);
     }
 }

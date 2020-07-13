@@ -39,7 +39,7 @@ class Index extends Base
 
         echo $msg;
         //关闭连接
-        socket_close($socket);
+        //socket_close($socket);
     }
 
 }
