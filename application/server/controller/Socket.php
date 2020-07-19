@@ -1,13 +1,13 @@
 <?php
 namespace app\server\controller;
 
-use core\Websocket;
+use core\Socket as SocketServer;
 
 class Socket
 {
     public function index()
     {
-        $webSocket = new Websocket();
+        $webSocket = new SocketServer();
         $webSocket->run();
     }
 }

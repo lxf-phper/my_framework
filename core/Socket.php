@@ -3,10 +3,10 @@
 namespace core;
 
 /**
- * Class Websocket
+ * Class Socket
  * @package core
  */
-class Websocket
+class Socket
 {
     //D:\phpstudy\PHPTutorial\php\php-7.0.12-nts\php.exe socket_server.php
     protected $config = []; //配置
@@ -97,7 +97,9 @@ class Websocket
                     }
                 } else {
                     // 如果可读的是其他已连接 socket ,则读取其数据,并处理应答逻辑
-                    $buffer = socket_read($socket, 8192, PHP_BINARY_READ);
+                    //$buffer = socket_read($socket, 8192, PHP_BINARY_READ);
+                    $len = socket_recv($socket, $buffer, 8192, 0);
+                    //todo 使用php的回调函数或匿名函数来实现这里的逻辑比较好
                     if ($this->sockets[intval($socket)]['handshake'] == false) {
                         $this->handshake($socket, $buffer);
                     } else {
@@ -126,8 +128,6 @@ class Websocket
     public function handleMsg($socket, $buffer)
     {
         $msg = $this->decode($socket, $buffer);
-//        $broadcastMsg = json_encode($broadcastMsg,true);
-//        $this->writeLog('receive data:'.$broadcastMsg);
         $broadcastMsg = '';
         $type = $msg['type'];
         $content = isset($msg['content']) ? $msg['content'] : '';
@@ -202,12 +202,12 @@ class Websocket
         $msg = $this->undecode($msg);
         socket_write($socket, $msg, strlen($msg));
 
-        socket_getpeername($socket, $addr, $port);
-        pt_progress(
-            'CLIENT: ' . $socket . ' handshake | ' .
-            'CONNECT FROM: ' . $addr . ':' . $port . ' | ' .
-            'PID: ' . getmypid()
-        );
+//        socket_getpeername($socket, $addr, $port);
+//        pt_progress(
+//            'CLIENT: ' . $socket . ' handshake | ' .
+//            'CONNECT FROM: ' . $addr . ':' . $port . ' | ' .
+//            'PID: ' . getmypid()
+//        );
         return true;
     }
 
