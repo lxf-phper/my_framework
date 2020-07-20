@@ -346,4 +346,20 @@ class Socket
         $filePath = $path . date('Y-m-d') . '-log.txt';
         file_put_contents($filePath, $message, FILE_APPEND);
     }
+
+    /**
+     * @param $method
+     * @var callback
+     */
+    public function on($method, $callback)
+    {
+        call_user_func($callback, $this->mainSocket);
+    }
+
+    public $onMessage;
+    public function testRun()
+    {
+        call_user_func($this->onMessage, $this->mainSocket, $this->sockets);
+    }
+
 }

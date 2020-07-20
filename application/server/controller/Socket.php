@@ -7,7 +7,14 @@ class Socket
 {
     public function index()
     {
-        $webSocket = new SocketServer();
-        $webSocket->run();
+        $socket = new SocketServer();
+//        $socket->on('message', function($connect){
+//            halt($connect);
+//        });
+        $socket->onMessage = function ($connect, $data) {
+            halt([$connect, $data]);
+        };
+        $socket->testRun();
+        //$socket->run();
     }
 }
