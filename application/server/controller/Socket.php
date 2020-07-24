@@ -11,10 +11,10 @@ class Socket
 //        $socket->on('message', function($connect){
 //            halt($connect);
 //        });
-        $socket->onMessage = function ($connect, $data) {
-            halt([$connect, $data]);
-        };
-        $socket->testRun();
-        //$socket->run();
+//        $socket->onMessage = function ($connect, $data) {
+//            halt([$connect, $data]);
+//        };
+//        $socket->testRun();
+        $socket->run();
     }
 }

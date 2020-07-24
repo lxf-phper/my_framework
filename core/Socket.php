@@ -100,9 +100,18 @@ class Socket
                     //$buffer = socket_read($socket, 8192, PHP_BINARY_READ);
                     $len = socket_recv($socket, $buffer, 8192, 0);
                     //todo 使用php的回调函数或匿名函数来实现这里的逻辑比较好
+
                     if ($this->sockets[intval($socket)]['handshake'] == false) {
-                        $this->handshake($socket, $buffer);
+                        // 握手与前端保持连接
+                        if ($this->isWebSocketProtocol($buffer)) {
+                            $this->handshake($socket, $buffer);
+                        } else {
+                            // 与后端通信
+                            $this->sockets[intval($socket)]['handshake'] = true; //修改当前socket的握手状态
+                            //todo
+                        }
                     } else {
+                        // 广播信息
                         $broadcastMsg = $this->handleMsg($socket, $buffer);
                         $this->broadcast($broadcastMsg);
                     }
@@ -177,17 +186,19 @@ class Socket
     }
 
     /**
-     * 公共握手方法握手
+     * websocket公共握手方法握手
      * @param $socket
      * @param $buffer
      * @return bool
      */
     public function handshake($socket, $buffer)
     {
+        // WebSocket 客户端连接报文
         $key = substr($buffer, strpos($buffer, 'Sec-WebSocket-Key:') + 18);
         $key = trim(substr($key, 0, strpos($key, "\r\n")));
         $key .= '258EAFA5-E914-47DA-95CA-C5AB0DC85B11';
         $upgrade_key = base64_encode(sha1($key, true));
+        // WebSocket 服务端响应报文
         $response = "HTTP/1.1 101 Switching Protocols\r\n"
             . "Upgrade: websocket\r\n"
             . "Connection: Upgrade\r\n"
@@ -281,12 +292,14 @@ class Socket
      */
     public function setSockets($resource)
     {
+        $uid = guid();
         $socket = [
             'resource'  => $resource,
             'username'  => '',
-            'handshake' => false
+            'handshake' => false,
+            'uid'       => $uid //暂时用不到
         ];
-        $this->sockets[intval($socket['resource'])] = $socket;
+        $this->sockets[intval($resource)] = $socket;
 
         socket_getpeername($resource, $addr, $port);
         pt_progress(
@@ -294,12 +307,6 @@ class Socket
             'CONNECT FROM: ' . $addr . ':' . $port . ' | ' .
             'PID: ' . getmypid()
         );
-//        $writeMsg = '';
-//        foreach ($socket as $key=>$val) {
-//            $writeMsg .= $key.': '.$val.' | ';
-//        }
-//        //array_push($this->sockets,$socket);
-//        $this->writeLog($writeMsg);
     }
 
     public function getSockets()
@@ -360,6 +367,33 @@ class Socket
     public function testRun()
     {
         call_user_func($this->onMessage, $this->mainSocket, $this->sockets);
+    }
+
+    /**
+     * 判断是否客户端发起的 WebSocket 连接报文
+     * @param $buffer
+     * @return bool
+     */
+    public function isWebSocketProtocol($buffer)
+    {
+        //报文示例
+        /*
+        GET / HTTP/1.1
+        Host: 127.0.0.1:8081
+        Connection: Upgrade
+        Pragma: no-cache
+        Cache-Control: no-cache
+        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36
+        Upgrade: websocket
+        Origin: http://local.framework.com
+        Sec-WebSocket-Version: 13
+        Accept-Encoding: gzip, deflate, br
+        Accept-Language: zh-CN,zh;q=0.9
+        Sec-WebSocket-Key: E/Yi5mTnUbCRRQas3VJSkg==
+        Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
+
+        */
+        return false !== strpos($buffer, 'Upgrade: websocket');
     }
 
 }
