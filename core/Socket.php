@@ -9,8 +9,24 @@ namespace core;
 class Socket
 {
     //D:\phpstudy\PHPTutorial\php\php-7.0.12-nts\php.exe socket_server.php
-    protected $config = []; //配置
-    protected $sockets = [];
+    /**
+     * 配置
+     * @var array
+     */
+    protected $config = [];
+
+    /**
+     * socket池
+     * @var array
+     */
+    protected $socketPool = [];
+
+    /**
+     * 用户信息池
+     * @var array
+     */
+    protected $userPool = [];
+
     /**
      * 服务器的socket
      * @var resource
@@ -61,7 +77,7 @@ class Socket
         socket_bind($this->mainSocket, $this->config['address'], $this->config['port']);
         // 监听套接字的连接
         socket_listen($this->mainSocket, $this->config['listen_socket_num']);
-        $this->sockets[intval($this->mainSocket)] = ['resource' => $this->mainSocket];
+        $this->socketPool[guid()] = $this->mainSocket;
 
         pt_progress(
             'SERVER: ' . $this->mainSocket . ' started | ' .
@@ -77,47 +93,65 @@ class Socket
     public function run()
     {
         while (true) {
-            $sockets = $this->getSockets();
+            dump([$this->socketPool,$this->userPool]);
+            $socketPool = $this->getSockets();
             // 接受套接字数组并等待它们更改状态(阻塞进程,直到有socket接入)
-            $readNum = socket_select($sockets, $write, $except, null);
+            $readNum = socket_select($socketPool, $write, $except, null);
             if ($readNum == false) {
                 $msg = "socket_select() failed: reason: " . socket_strerror(socket_last_error());
                 pt_progress($msg);
                 return null;
             }
-            foreach ($sockets as $key => $socket) {
+            foreach ($socketPool as $uniqid => $socket) {
                 if ($socket == $this->mainSocket) {
-                    // 如果可读的是服务器的socket,则处理连接逻辑
-                    $resource = socket_accept($socket);
-                    if ($resource != false) {
-                        $this->setSockets($resource);
-                    } else {
-                        $msg = "socket_accept() failed: reason: " . socket_strerror(socket_last_error());
-                        pt_progress($msg);
-                    }
+                    // 如果是服务器的socket,则处理连接逻辑
+                    $this->handleServerSocketAccept($socket);
                 } else {
                     // 如果可读的是其他已连接 socket ,则读取其数据,并处理应答逻辑
-                    //$buffer = socket_read($socket, 8192, PHP_BINARY_READ);
-                    $len = socket_recv($socket, $buffer, 8192, 0);
-                    //todo 使用php的回调函数或匿名函数来实现这里的逻辑比较好
-
-                    if ($this->sockets[intval($socket)]['handshake'] == false) {
-                        // 握手与前端保持连接
-                        if ($this->isWebSocketProtocol($buffer)) {
-                            $this->handshake($socket, $buffer);
-                        } else {
-                            // 与后端通信
-                            $this->sockets[intval($socket)]['handshake'] = true; //修改当前socket的握手状态
-                            //todo
-                        }
-                    } else {
-                        // 广播信息
-                        $broadcastMsg = $this->handleMsg($socket, $buffer);
-                        $this->broadcast($broadcastMsg);
-                    }
+                    $this->handleClientSocketResponse($socket);
                 }
             }
         }
+    }
+
+    /**
+     * 服务端socket,处理客户端连接逻辑
+     * @param $socket
+     */
+    public function handleServerSocketAccept($socket)
+    {
+        // 如果可读的是服务器的socket,则处理连接逻辑
+        $resource = socket_accept($socket);
+        if ($resource != false) {
+            $this->setSockets($resource);
+        } else {
+            $msg = "socket_accept() failed: reason: " . socket_strerror(socket_last_error());
+            pt_progress($msg);
+        }
+    }
+
+    /**
+     * 客户端socket,读取其数据,并处理应答逻辑
+     * @param $socket
+     * @return bool
+     */
+    public function handleClientSocketResponse($socket)
+    {
+        $uniqid = $this->searchSocket($socket);
+        if (!$uniqid) return false;
+
+        // 如果可读的是其他已连接 socket ,则读取其数据,并处理应答逻辑
+        //$buffer = socket_read($socket, 8192, PHP_BINARY_READ);
+        $len = socket_recv($socket, $buffer, 8192, 0);
+        if ($this->userPool[$uniqid]['handshake'] == false) {
+            // 握手
+            $this->handshake($uniqid, $buffer);
+        } else {
+            // 广播信息
+            $broadcastMsg = $this->handleMsg($uniqid, $buffer);
+            $this->broadcast($broadcastMsg);
+        }
+        return true;
     }
 
     /**
@@ -126,34 +160,29 @@ class Socket
      */
     public function broadcast($msg)
     {
-        foreach ($this->sockets as $key => $socket) {
-            if (isset($socket['handshake']) && !empty($socket['handshake']) && is_resource($socket['resource'])) {
-                socket_write($socket['resource'], $msg, strlen($msg));
+        foreach ($this->userPool as $uniqid => $user) {
+            if (isset($user['handshake']) && !empty($user['handshake']) && is_resource($user['socket'])) {
+                socket_write($user['socket'], $msg, strlen($msg));
             }
         }
     }
 
     //处理客户端的消息
-    public function handleMsg($socket, $buffer)
+    public function handleMsg($uniqid, $buffer)
     {
-        $msg = $this->decode($socket, $buffer);
+        $msg = $this->decode($uniqid, $buffer);
         $broadcastMsg = '';
         $type = $msg['type'];
         $content = isset($msg['content']) ? $msg['content'] : '';
         unset($msg['type']);
         switch ($type) {
             case 'login' :
-                $this->sockets[intval($socket)]['username'] = $content['user_name'];
-                $writeMsg = '';
-                foreach ($this->sockets[intval($socket)] as $key => $val) {
-                    $writeMsg .= $key . ': ' . $val . ' | ';
-                }
-                $this->writeLog($writeMsg);
+                $this->userPool[$uniqid]['username'] = $content['user_name'];
                 $msg = [
                     'type'    => $type,
                     'content' => [
                         'user_name' => $content['user_name'],
-                        'user_list' => array_column($this->sockets, 'username'),
+                        'user_list' => array_column($this->userPool, 'username'),
                     ]
                 ];
                 $broadcastMsg = json_encode($msg);
@@ -164,14 +193,12 @@ class Socket
                     'content' => $content,
                 ];
                 $broadcastMsg = json_encode($msg);
-                $this->writeLog('receive data:' . $broadcastMsg);
                 break;
             case 'clear' :
                 $msg = [
                     'type' => $type
                 ];
                 $broadcastMsg = json_encode($msg);
-                $this->writeLog('clear sketchpad');
                 break;
             case 'dialog' :
                 $msg = [
@@ -179,7 +206,6 @@ class Socket
                     'content' => $content
                 ];
                 $broadcastMsg = json_encode($msg);
-                $this->writeLog('receive data:' . $broadcastMsg);
                 break;
         }
         return $this->undecode($broadcastMsg);
@@ -187,11 +213,11 @@ class Socket
 
     /**
      * websocket公共握手方法握手
-     * @param $socket
+     * @param $uniqid
      * @param $buffer
      * @return bool
      */
-    public function handshake($socket, $buffer)
+    public function handshake($uniqid, $buffer)
     {
         // WebSocket 客户端连接报文
         $key = substr($buffer, strpos($buffer, 'Sec-WebSocket-Key:') + 18);
@@ -203,8 +229,10 @@ class Socket
             . "Upgrade: websocket\r\n"
             . "Connection: Upgrade\r\n"
             . "Sec-WebSocket-Accept: " . $upgrade_key . "\r\n\r\n";
+
+        $socket = $this->socketPool[$uniqid];
         socket_write($socket, $response, strlen($response)); // 向socket里写入升级信息
-        $this->sockets[intval($socket)]['handshake'] = true; //修改当前socket的握手状态
+        $this->userPool[$uniqid]['handshake'] = true; //修改当前socket的握手状态
         // 向客户端发送握手成功信息，触发客户端发送用户信息
         $msg = [
             'type' => 'handshake',
@@ -225,11 +253,11 @@ class Socket
     /**
      * 解析数据帧(1Byte=8bit)
      * 一个英文字母（不分大小写）占一个字节的空间，一个中文汉字占两个字节的空间。一个二进制数字序列，在计算机中作为一个数字单元，一般为8位二进制数，换算为十进制。最小值0，最大值255。如一个ASCII码就是一个字节。
-     * @param $socket
+     * @param $uniqid
      * @param $buffer
      * @return mixed|null
      */
-    public function decode($socket, $buffer)
+    public function decode($uniqid, $buffer)
     {
         $opcode = ord(substr($buffer, 0, 1)) & 0x0F; //opcode标识数据类型,如果收到一个未知的操作码，接收端点必须_失败WebSocket连接
         $payloadlen = ord(substr($buffer, 1, 1)) & 0x7F; //PayloadLen表示数据部分的长度
@@ -240,7 +268,7 @@ class Socket
 
         // 关闭socket连接
         if ($ismask != 1 || $opcode == 0x8) {
-            $this->disconnect($socket);
+            $this->disconnect($uniqid);
             return null;
         }
 
@@ -293,13 +321,12 @@ class Socket
     public function setSockets($resource)
     {
         $uid = guid();
-        $socket = [
-            'resource'  => $resource,
+        $this->socketPool[$uid] = $resource;
+        $this->userPool[$uid] = [
+            'socket'  => $resource,
             'username'  => '',
-            'handshake' => false,
-            'uid'       => $uid //暂时用不到
+            'handshake' => false
         ];
-        $this->sockets[intval($resource)] = $socket;
 
         socket_getpeername($resource, $addr, $port);
         pt_progress(
@@ -309,33 +336,50 @@ class Socket
         );
     }
 
+    /**
+     * 获取socket数组
+     * @return array
+     */
     public function getSockets()
     {
-        foreach ($this->sockets as $key => $val) {
-            if (!is_resource($val['resource'])) {
-                $this->disconnect($val['resource']);
+        foreach ($this->socketPool as $uniqid => $socket) {
+            if (!is_resource($socket)) {
+                $this->disconnect($uniqid);
             }
         }
-        $sockets = array_column($this->sockets, 'resource');
-        return $sockets;
+        return $this->socketPool;
+    }
+
+    /**
+     * 根据socket资源符查找socket的id
+     * @param $resource
+     * @return int|string|null 唯一的id
+     */
+    public function searchSocket($resource)
+    {
+        foreach ($this->socketPool as $uniqid => $socket) {
+            if ($resource == $socket) {
+                return $uniqid;
+            }
+        }
+        return null;
     }
 
     /**
      * 关闭socket连接
-     * @param $socket
+     * @param $uniqid
      */
-    public function disconnect($socket)
+    public function disconnect($uniqid)
     {
-        unset($this->sockets[intval($socket)]);
-
+        $socket = $this->socketPool[$uniqid];
         socket_getpeername($socket, $addr, $port);
         pt_progress(
             'CLIENT: ' . $socket . ' close | ' .
             'CONNECT FROM: ' . $addr . ':' . $port . ' | ' .
             'PID: ' . getmypid()
         );
-
         socket_close($socket);
+        unset($this->socketPool[$uniqid], $this->userPool[$uniqid]);
     }
 
     // 记录日志
@@ -353,47 +397,4 @@ class Socket
         $filePath = $path . date('Y-m-d') . '-log.txt';
         file_put_contents($filePath, $message, FILE_APPEND);
     }
-
-    /**
-     * @param $method
-     * @var callback
-     */
-    public function on($method, $callback)
-    {
-        call_user_func($callback, $this->mainSocket);
-    }
-
-    public $onMessage;
-    public function testRun()
-    {
-        call_user_func($this->onMessage, $this->mainSocket, $this->sockets);
-    }
-
-    /**
-     * 判断是否客户端发起的 WebSocket 连接报文
-     * @param $buffer
-     * @return bool
-     */
-    public function isWebSocketProtocol($buffer)
-    {
-        //报文示例
-        /*
-        GET / HTTP/1.1
-        Host: 127.0.0.1:8081
-        Connection: Upgrade
-        Pragma: no-cache
-        Cache-Control: no-cache
-        User-Agent: Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/70.0.3538.77 Safari/537.36
-        Upgrade: websocket
-        Origin: http://local.framework.com
-        Sec-WebSocket-Version: 13
-        Accept-Encoding: gzip, deflate, br
-        Accept-Language: zh-CN,zh;q=0.9
-        Sec-WebSocket-Key: E/Yi5mTnUbCRRQas3VJSkg==
-        Sec-WebSocket-Extensions: permessage-deflate; client_max_window_bits
-
-        */
-        return false !== strpos($buffer, 'Upgrade: websocket');
-    }
-
 }

@@ -26,7 +26,7 @@ class Index extends Base
     //测试用php连接socket
     public function test()
     {
-        halt([guid(),guid(),guid(),guid()]);
+        //halt([guid(),guid(),guid(),guid()]);
         $st="socket send message";
         $length = strlen($st);
         //创建tcp套接字
